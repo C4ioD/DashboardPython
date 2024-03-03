@@ -14,8 +14,9 @@
 
     <main>
       <h1>Dashboard Vendas</h1>
+
       <hr />
-      <section id="g-cards">
+      <section id="g-cards container">
         <div class="row d-flex justify-content-center">
           <div class="card col-md-2">
             <div class="card-body">
@@ -50,17 +51,25 @@
         </div>
       </section>
       <section id="sobre">
-        <div class="row">
-          <div class="col-md-6 grafico">{{ graph_html_vendas|safe }}</div>
-          <div class="col-md-6 grafico">{{ graph_html_qtd_vendas|safe }}</div>
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-5 grafico">
+            <legend>Faturamento Mensal</legend>
+            {{ graph_html_vendas|safe }}
+          </div>
+          <div class="col-md-5 grafico">
+            <legend>Quantide de Vendas Mensal</legend>
+            {{ graph_html_qtd_vendas|safe }}
+          </div>
         </div>
       </section>
       <section>
-        <div class="row">
-          <div class="col-md-6 grafico">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-5 grafico">
+            <legend>Faturamento Mensal</legend>
             {{graph_html_faturamento_vendedor|safe}}
           </div>
-          <div class="col-md-6 grafico">
+          <div class="col-md-5 grafico">
+            <legend>Faturamento Mensal</legend>
             {{graph_html_qtde_vendida_pagamentos|safe}}
           </div>
         </div>

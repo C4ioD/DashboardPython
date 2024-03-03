@@ -29,6 +29,37 @@ faturamento['Mes'] = pd.Categorical(faturamento['Mes'], categories=ordem_meses, 
 faturamento = faturamento.sort_values('Mes')
 fig_fat =  px.bar(faturamento,x='Mes',y='Faturamento', text_auto=True)
 fig_fat.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+fig_fat.update_layout(
+    xaxis=dict(
+        tickfont=dict(
+            color='#ffffff'  # Substitua 'red' pela cor desejada
+        ),
+        
+    ),
+    yaxis=dict(
+        tickfont=dict(
+            color='#ffffff'   # Substitua 'blue' pela cor desejada
+        )
+    )
+)
+fig_fat.update_layout(
+    xaxis=dict(
+        title=dict(
+            font=dict(
+                color='#ffffff'  
+            )
+        )
+    ),
+    yaxis=dict(
+        title=dict(
+            font=dict(
+                color='#ffffff'  
+            )
+        )
+    )
+)
+
+fig_fat.update_traces(marker_color='#8735FB')  # Substitua 'blue' pela cor desejada
 g_faturamento_mensal =fig_fat
 
 
@@ -36,14 +67,80 @@ g_faturamento_mensal =fig_fat
 qtde_vendida_mes = df.groupby('Mes')['Quantidade Vendida'].sum().sort_values(ascending=False).reset_index()
 qtde_vendida_mes['Mes'] = pd.Categorical(qtde_vendida_mes['Mes'], categories=ordem_meses, ordered=True)
 qtde_vendida_mes = qtde_vendida_mes.sort_values('Mes')
-fig_vendas = px.bar(qtde_vendida_mes,x='Mes',y='Quantidade Vendida', text_auto=True)
+fig_vendas = px.line(qtde_vendida_mes,x='Mes',y='Quantidade Vendida',markers=True)
 fig_vendas.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+fig_vendas.update_layout(
+    xaxis=dict(
+        tickfont=dict(
+            color='#ffffff'  # Substitua 'red' pela cor desejada
+        ),
+        
+    ),
+    yaxis=dict(
+        tickfont=dict(
+            color='#ffffff'   # Substitua 'blue' pela cor desejada
+        )
+    )
+)
+fig_vendas.update_layout(
+    xaxis=dict(
+        title=dict(
+            font=dict(
+                color='#ffffff'  
+            )
+        )
+    ),
+    yaxis=dict(
+        title=dict(
+            font=dict(
+                color='#ffffff'  
+            )
+        )
+    )
+)
+
+fig_vendas.update_traces(marker_color='#8735FB')  # Substitua 'blue' pela cor desejada
+fig_vendas.update_layout(
+    xaxis=dict(showgrid=False),
+    yaxis=dict(showgrid=False)
+)
 g_qtde_vendida_mes = fig_vendas
 
 #Faturamento por vendedor
 faturamento_vendedor = df.groupby('Vendedor')['Faturamento'].sum().sort_values(ascending=True).reset_index()
 fig_fat_vendedor = px.bar(faturamento_vendedor ,x='Faturamento', y='Vendedor', text_auto='.2s' , orientation='h')
 fig_fat_vendedor.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+fig_fat_vendedor.update_layout(
+    xaxis=dict(
+        tickfont=dict(
+            color='#ffffff'  # Substitua 'red' pela cor desejada
+        ),
+        
+    ),
+    yaxis=dict(
+        tickfont=dict(
+            color='#ffffff'   # Substitua 'blue' pela cor desejada
+        )
+    )
+)
+fig_fat_vendedor.update_layout(
+    xaxis=dict(
+        title=dict(
+            font=dict(
+                color='#ffffff'  
+            )
+        )
+    ),
+    yaxis=dict(
+        title=dict(
+            font=dict(
+                color='#ffffff'  
+            )
+        )
+    )
+)
+
+fig_fat_vendedor.update_traces(marker_color='#8735FB')  # Substitua 'blue' pela cor desejada
 g_faturamento_vendedor =fig_fat_vendedor
 
 
@@ -51,4 +148,5 @@ g_faturamento_vendedor =fig_fat_vendedor
 qtde_vendida_pagamento = df.groupby('Forma de Pagamento')['Quantidade Vendida'].sum().sort_values(ascending=False).reset_index()
 fig_qtd_vendida =  px.pie(qtde_vendida_pagamento,values='Quantidade Vendida', names='Forma de Pagamento')
 fig_qtd_vendida.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
+
 g_qtde_vendida_pagamento =fig_qtd_vendida
