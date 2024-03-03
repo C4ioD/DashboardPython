@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <!-- (cabeçalho HTML anterior) -->
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- Local onde o gráfico será renderizado -->
+
+    <main>
+      <h1>Dashboard Vendas</h1>
+      <hr />
+      <section id="g-cards">
+        <div class="row d-flex justify-content-center">
+          <div class="card col-md-2">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="bi bi-bank2"></i> Faturamento
+              </h5>
+              <p class="card-text">R$ {{c_faturamento}}</p>
+            </div>
+          </div>
+          <div class="card col-md-2">
+            <div class="card-body">
+              <h5 class="card-title"><i class="bi bi-cash-coin"></i> Lucro</h5>
+              <p class="card-text">R$ {{c_lucro}}</p>
+            </div>
+          </div>
+          <div class="card col-md-2">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="bi bi-cart-check-fill"></i> Qtde Vendida
+              </h5>
+              <p class="card-text">R$ {{c_qtd_vendida}}</p>
+            </div>
+          </div>
+          <div class="card col-md-2">
+            <div class="card-body">
+              <h5 class="card-title">
+                <i class="bi bi-star-fill"></i> Mais Vendido
+              </h5>
+              <p class="card-text">{{c_prod_mais_vendido}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sobre">
+        <div class="row">
+          <div class="col-md-6 grafico">{{ graph_html_vendas|safe }}</div>
+          <div class="col-md-6 grafico">{{ graph_html_qtd_vendas|safe }}</div>
+        </div>
+      </section>
+      <section>
+        <div class="row">
+          <div class="col-md-6 grafico">
+            {{graph_html_faturamento_vendedor|safe}}
+          </div>
+          <div class="col-md-6 grafico">
+            {{graph_html_qtde_vendida_pagamentos|safe}}
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="../static/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/scripts.js"></script>
+  </body>
+</html>
