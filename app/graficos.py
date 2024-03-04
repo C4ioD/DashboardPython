@@ -8,13 +8,14 @@ df = df.drop("Vendedor", axis='columns')
 df['Vendedor'] = split_col[0]
 
 #Faturamento
-c_faturamento = df.Faturamento.sum()
+c_faturamento = f'{df.Faturamento.sum():,.2f}'
 
 #Lucro 
-c_lucro = df.Lucro.sum()
+c_lucro = f'{df.Lucro.sum():,.2f}'
 
 #Quantidade vendida
 c_qtd_vendida = df['Quantidade Vendida'].sum()
+c_qtd_vendida = f'{c_qtd_vendida:,.2f}'
 
 # Produto mais vendido
 c_prod_mais_vendido = df.groupby('Produto')['Quantidade Vendida'].sum().sort_values(ascending=False).index[0]
@@ -32,13 +33,13 @@ fig_fat.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)
 fig_fat.update_layout(
     xaxis=dict(
         tickfont=dict(
-            color='#ffffff'  # Substitua 'red' pela cor desejada
+            color='#ffffff'  
         ),
         
     ),
     yaxis=dict(
         tickfont=dict(
-            color='#ffffff'   # Substitua 'blue' pela cor desejada
+            color='#ffffff'   
         )
     )
 )
@@ -59,7 +60,7 @@ fig_fat.update_layout(
     )
 )
 
-fig_fat.update_traces(marker_color='#8735FB')  # Substitua 'blue' pela cor desejada
+fig_fat.update_traces(marker_color='#8735FB')  
 g_faturamento_mensal =fig_fat
 
 
@@ -72,13 +73,13 @@ fig_vendas.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0
 fig_vendas.update_layout(
     xaxis=dict(
         tickfont=dict(
-            color='#ffffff'  # Substitua 'red' pela cor desejada
+            color='#ffffff'  
         ),
         
     ),
     yaxis=dict(
         tickfont=dict(
-            color='#ffffff'   # Substitua 'blue' pela cor desejada
+            color='#ffffff'   
         )
     )
 )
@@ -99,7 +100,7 @@ fig_vendas.update_layout(
     )
 )
 
-fig_vendas.update_traces(marker_color='#8735FB')  # Substitua 'blue' pela cor desejada
+fig_vendas.update_traces(marker_color='#8735FB')  
 fig_vendas.update_layout(
     xaxis=dict(showgrid=False),
     yaxis=dict(showgrid=False)
@@ -113,13 +114,13 @@ fig_fat_vendedor.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba
 fig_fat_vendedor.update_layout(
     xaxis=dict(
         tickfont=dict(
-            color='#ffffff'  # Substitua 'red' pela cor desejada
+            color='#ffffff'  
         ),
         
     ),
     yaxis=dict(
         tickfont=dict(
-            color='#ffffff'   # Substitua 'blue' pela cor desejada
+            color='#ffffff'  
         )
     )
 )
@@ -140,13 +141,14 @@ fig_fat_vendedor.update_layout(
     )
 )
 
-fig_fat_vendedor.update_traces(marker_color='#8735FB')  # Substitua 'blue' pela cor desejada
+fig_fat_vendedor.update_traces(marker_color='#8735FB')  
 g_faturamento_vendedor =fig_fat_vendedor
 
 
 #Quantidade vendida por forma de pagamento
 qtde_vendida_pagamento = df.groupby('Forma de Pagamento')['Quantidade Vendida'].sum().sort_values(ascending=False).reset_index()
-fig_qtd_vendida =  px.pie(qtde_vendida_pagamento,values='Quantidade Vendida', names='Forma de Pagamento')
+cores = ['#8735FB', '#B8B8D8']
+fig_qtd_vendida =  px.pie(qtde_vendida_pagamento,values='Quantidade Vendida', names='Forma de Pagamento', color_discrete_sequence=cores)
 fig_qtd_vendida.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)')
 
 g_qtde_vendida_pagamento =fig_qtd_vendida

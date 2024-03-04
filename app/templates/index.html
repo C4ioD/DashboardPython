@@ -14,8 +14,6 @@
 
     <main>
       <h1>Dashboard Vendas</h1>
-
-      <hr />
       <section id="g-cards container">
         <div class="row d-flex justify-content-center">
           <div class="card col-md-2">
@@ -65,11 +63,11 @@
       <section>
         <div class="row d-flex justify-content-center">
           <div class="col-md-5 grafico">
-            <legend>Faturamento Mensal</legend>
+            <legend>Faturamento por Vendedor</legend>
             {{graph_html_faturamento_vendedor|safe}}
           </div>
           <div class="col-md-5 grafico">
-            <legend>Faturamento Mensal</legend>
+            <legend>Vendar por Forma de Pagamento</legend>
             {{graph_html_qtde_vendida_pagamentos|safe}}
           </div>
         </div>

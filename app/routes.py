@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from app.analise import c_faturamento , c_lucro, c_qtd_vendida, c_prod_mais_vendido, g_faturamento_mensal, g_faturamento_vendedor , g_qtde_vendida_mes , g_qtde_vendida_pagamento
+from app.graficos import c_faturamento , c_lucro, c_qtd_vendida, c_prod_mais_vendido, g_faturamento_mensal, g_faturamento_vendedor , g_qtde_vendida_mes , g_qtde_vendida_pagamento
 import plotly.express as px
 
 @app.route('/')
